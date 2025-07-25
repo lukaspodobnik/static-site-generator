@@ -67,6 +67,10 @@ class TestTextToHTML(unittest.TestCase):
             html_node.props, {"src": "srcisthesrc.com", "alt": "This is an image node"}
         )
 
+    def test_no_type(self):
+        node = TextNode("This is a node with no type.", None)
+        self.assertRaises(ValueError, text_node_to_html_node, node)
+
 
 if __name__ == "main":
     unittest.main()

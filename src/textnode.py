@@ -45,3 +45,5 @@ def text_node_to_html_node(node: TextNode) -> LeafNode:
             return LeafNode(
                 tag="img", value="", props={"src": node.url, "alt": node.text}
             )
+        case _:
+            raise ValueError("Given TextNode has bad TextType.")
