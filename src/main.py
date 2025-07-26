@@ -1,8 +1,8 @@
-from textnode import TextNode, TextType
+from clone_contents import clone_contents
+
 
 def main():
-    text_node = TextNode("this is some anchor text", TextType.LINK, "this is some url.dev")
-    print(text_node)
+    clone_contents("static/", "public/")
 
 
 if __name__ == "__main__":
