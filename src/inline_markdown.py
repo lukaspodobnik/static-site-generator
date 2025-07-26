@@ -15,12 +15,12 @@ def split_nodes_delimiter(
     return list(
         filter(
             lambda node: node.text != "",
-            __split_nodes_delimiter(old_nodes, delimiter, text_type),
+            _split_nodes_delimiter(old_nodes, delimiter, text_type),
         )
     )
 
 
-def __split_nodes_delimiter(
+def _split_nodes_delimiter(
     old_nodes: list[TextNode], delimiter: str, text_type: TextType
 ) -> list[TextNode]:
     new_nodes = []
@@ -61,7 +61,7 @@ def split_nodes_image(old_nodes: list[TextNode]) -> list[TextNode]:
             continue
 
         text = node.text
-        images = _extract_markdown_images(text)
+        images = extract_markdown_images(text)
         for image in images:
             text_parts = text.split(f"![{image[0]}]({image[1]})", maxsplit=1)
             text = text_parts[1]
@@ -80,7 +80,7 @@ def split_nodes_link(old_nodes: list[TextNode]) -> list[TextNode]:
             continue
 
         text = node.text
-        links = _extract_markdown_links(text)
+        links = extract_markdown_links(text)
         for link in links:
             text_parts = text.split(f"[{link[0]}]({link[1]})", maxsplit=1)
             text = text_parts[1]
@@ -91,11 +91,11 @@ def split_nodes_link(old_nodes: list[TextNode]) -> list[TextNode]:
     return list(filter(lambda node: node.text != "", new_nodes))
 
 
-def _extract_markdown_images(text: str) -> list[tuple[str, str]]:
+def extract_markdown_images(text: str) -> list[tuple[str, str]]:
     return findall(r"!\[(.*?)\]\((.*?)\)", text)
 
 
-def _extract_markdown_links(text: str) -> list[tuple[str, str]]:
+def extract_markdown_links(text: str) -> list[tuple[str, str]]:
     return findall(r"\[(.*?)\]\((.*?)\)", text)
 
 

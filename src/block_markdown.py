@@ -14,7 +14,10 @@ class BlockType(Enum):
 
 def markdown_to_blocks(markdown: str):
     return list(
-        filter(lambda block: block != "", map(str.strip, markdown.split("\n\n")))
+        filter(
+            lambda block: block != "",
+            map(lambda block: block.strip(" \n"), markdown.split("\n\n")),
+        )
     )
 
 

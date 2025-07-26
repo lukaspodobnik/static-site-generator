@@ -1,8 +1,8 @@
 import unittest
 
 from inline_markdown import (
-    _extract_markdown_images,
-    _extract_markdown_links,
+    extract_markdown_images,
+    extract_markdown_links,
     split_nodes_delimiter,
     split_nodes_image,
     split_nodes_link,
@@ -136,13 +136,13 @@ class TestSplitNodesDelimiter(unittest.TestCase):
 
 class TestExtractMarkdownImagesAndLinks(unittest.TestCase):
     def test_extract_markdown_images(self):
-        matches = _extract_markdown_images(
+        matches = extract_markdown_images(
             "This is text with an ![image](https://i.imgur.com/zjjcJKZ.png)"
         )
         self.assertListEqual([("image", "https://i.imgur.com/zjjcJKZ.png")], matches)
 
     def test_extract_mardown_links(self):
-        matches = _extract_markdown_links("This is text with a [link](https://l.link)")
+        matches = extract_markdown_links("This is text with a [link](https://l.link)")
         self.assertListEqual([("link", "https://l.link")], matches)
 
 
