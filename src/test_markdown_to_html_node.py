@@ -89,3 +89,6 @@ the **same** even with inline stuff
             html,
             "<div><ol><li>First item with <b>bold</b> text</li><li>Second item with <i>italic</i> text</li><li>Third item with <code>code</code></li></ol></div>",
         )
+
+    def test_full_example_page(self):
+        pass

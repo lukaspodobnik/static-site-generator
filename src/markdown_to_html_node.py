@@ -60,7 +60,7 @@ def _make_quote(block: str) -> ParentNode:
     return ParentNode(
         tag="blockquote",
         children=_text_to_children(
-            "\n".join(line[1:] for line in block.split("\n")).replace("\n", " ")
+            "\n".join(line[1:].strip() for line in block.split("\n")).replace("\n", " ")
         ),
     )
 

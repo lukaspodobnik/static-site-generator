@@ -3,11 +3,6 @@ import shutil
 
 
 def clone_contents(src: str, dst: str) -> None:
-    script_dir = os.path.abspath(__file__)
-    project_root = os.path.abspath(os.path.join(script_dir, "../.."))
-    src = os.path.join(project_root, src)
-    dst = os.path.join(project_root, dst)
-
     if not os.path.isdir(src):
         raise ValueError("src does not lead to an existing directory.")
 
